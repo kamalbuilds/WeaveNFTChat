@@ -1,0 +1,26 @@
+{
+  "name": "relayer-nft",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.7.1",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.10",
+    "ethers": "^6.6.3",
+    "framer-motion": "^6",
+    "next": "13.4.10",
+    "ramda": "^0.29.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "weavedb-sdk": "^0.27.26",
+    "weavedb-sdk-node": "^0.27.25"
+  }
+}
