@@ -21,46 +21,79 @@ import Features from './features'
     return (
       <Container maxW={'container.xl'}>
       <Stack
-        spacing={{ base: 10, md: 20 }}
+        spacing={{ base: 5, md: 5 }}
         align={{ base: 'center', md: 'flex-start' }}
         direction={{ base: 'column', md: 'row' }}
         py={{ base: 1, md: 10 }}>
-        <InputGroup size="lg" w={{ base: '100%', md: '70%' }} alignSelf="center">
-          <InputLeftAddon
-            pointerEvents="none"
-            fontSize={{ base: 'sm', md: 'md' }}
-            color="gray.600"
-            bg="white"
-            border="1px solid"
-            borderColor={useColorModeValue('gray.200', 'gray.700')}
-            rounded="xl"
-            px={4}
-            py={3}
-            fontWeight="semibold"
-            whiteSpace="nowrap"
-            shadow="md">
-            ETH wallet address
-          </InputLeftAddon>
-          <Input
-            type="wallet"
-            placeholder="0xEc86f5..."
-            rounded="xl"
-            py={4}
-            px={6}
-            bg={useColorModeValue('white', 'gray.800')}
-            borderColor={useColorModeValue('gray.200', 'gray.700')}
-            borderWidth={1}
-            _focus={{
-              borderColor: useColorModeValue('purple.500', 'purple.300'),
-              boxShadow: 'outline',
-            }}
-          />
-        </InputGroup>
+          {/* Input for "Wallet Address" */}
+          <InputGroup size="lg" w={{ base: '100%', md: '70%' }} alignSelf="center">
+            <InputLeftAddon
+              pointerEvents="none"
+              fontSize={{ base: 'sm', md: 'md' }}
+              color="gray.600"
+              bg="white"
+              border="1px solid"
+              borderColor={useColorModeValue('gray.200', 'gray.700')}
+              rounded="xl"
+              px={4}
+              py={3}
+              fontWeight="semibold"
+              whiteSpace="nowrap"
+              shadow="md">
+              ETH wallet address
+            </InputLeftAddon>
+            <Input
+              type="wallet"
+              placeholder="0xEc86f5..."
+              rounded="xl"
+              py={4}
+              px={6}
+              bg={useColorModeValue('white', 'gray.800')}
+              borderColor={useColorModeValue('gray.200', 'gray.700')}
+              borderWidth={1}
+              _focus={{
+                borderColor: useColorModeValue('purple.500', 'purple.300'),
+                boxShadow: 'outline',
+              }}
+            />
+          </InputGroup>
+          {/* Input for "Choose topic" */}
+          <InputGroup size="lg" w={{ base: '100%', md: '70%' }} alignSelf="center">
+        <InputLeftAddon
+          pointerEvents="none"
+          fontSize={{ base: 'sm', md: 'md' }}
+          color="gray.600"
+          bg="white"
+          border="1px solid"
+          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          rounded="xl"
+          px={4}
+          py={3}
+          fontWeight="semibold"
+          whiteSpace="nowrap"
+          shadow="md">
+          Choose topic
+        </InputLeftAddon>
+        <Input
+          type="text"
+          placeholder="Enter your topic..."
+          rounded="xl"
+          py={4}
+          px={6}
+          bg={useColorModeValue('white', 'gray.800')}
+          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          borderWidth={1}
+          _focus={{
+            borderColor: useColorModeValue('purple.500', 'purple.300'),
+            boxShadow: 'outline',
+          }}
+        />
+          </InputGroup>
         <Button
                 rounded={'full'}
                 size={'lg'}
                 fontWeight={'semibold'}
-                px={6}
+                px={8}
                 colorScheme={'pink'}
                 bg={'rgb(249, 92, 255)'}
                 _hover={{ bg: '#b900c9' }}>
@@ -137,7 +170,8 @@ import Features from './features'
               top={'-30%'}
               left={0}
               zIndex={-1}
-              color={useColorModeValue('#b900c9', 'rgb(249, 92, 255)')}
+              color={useColorModeValue('rgba(185, 0, 201, 0.5)', '#b900c9')}
+
               
             />
             <Box
