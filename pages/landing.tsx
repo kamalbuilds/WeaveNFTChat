@@ -13,6 +13,7 @@ import {
     IconProps,
     useColorModeValue,
   } from '@chakra-ui/react';
+import Features from './features'
   
   export default function CallToActionWithVideo() {
     return (
@@ -44,11 +45,11 @@ import {
               </Text>
               <br />
               <Text as={'span'} color={'rgb(249, 92, 255)'}>
-                with people that inspire you!
+                with people that inspire you! 💬
               </Text>
             </Heading>
             <Text color={'gray.500'}>
-              Scroll through their Lens feed and send them direct, private message. 💬
+              Scroll through their Lens feed and send them direct, private message. 
             </Text>
             <Stack
               spacing={{ base: 4, sm: 6 }}
@@ -72,6 +73,7 @@ import {
                 How It Works
               </Button>
             </Stack>
+            <Features />
           </Stack>
           <Flex
             flex={1}
@@ -87,6 +89,7 @@ import {
               left={0}
               zIndex={-1}
               color={useColorModeValue('#b900c9', 'rgb(249, 92, 255)')}
+              
             />
             <Box
               position={'relative'}
@@ -137,3 +140,6 @@ import {
       </Icon>
     );
   };
+
+  
+  
