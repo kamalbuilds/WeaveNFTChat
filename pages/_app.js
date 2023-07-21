@@ -85,64 +85,67 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider theme={theme}>
-    <AppContext.Provider value={{
-      userAddress,
-      profile: userProfile
-    }}>
-      <div>
-        <nav className={navStyle}>
-          <div className={navContainerStyle}>
-            <div className={linkContainerStyle}>
-              <Link href='/'>
-                <p className={linkTextStyle}>Weave NFT-Chat</p>
-              </Link>
-              <Link href='/'>
-                <p className={linkTextStyle}>Home</p>
-              </Link>
-              <Link href='/profiles'>
-                <p className={linkTextStyle}>Explore Profiles</p>
-              </Link>
-              {
-                userProfile && (
-                  <Link href={`/profile/${userProfile.id}`}>
-                    <p className={linkTextStyle}>Profile</p>
-                  </Link>
-                )
-              }
+      <AppContext.Provider value={{
+        userAddress,
+        profile: userProfile
+      }}>
+        <div>
+          <nav className={navStyle}>
+            <div className={navContainerStyle}>
+              <div className={linkContainerStyle}>
+                <Link href='/'>
+                  <p className={linkTextStyle}>Weave NFT-Chat</p>
+                </Link>
+                <Link href='/'>
+                  <p className={linkTextStyle}>Home</p>
+                </Link>
+                <Link href='/profiles'>
+                  <p className={linkTextStyle}>Explore Profiles</p>
+                </Link>
+                <Link href='/group/a'>
+                  <p className={linkTextStyle}>Lets Chat</p>
+                </Link>
+                {
+                  userProfile && (
+                    <Link href={`/profile/${userProfile.id}`}>
+                      <p className={linkTextStyle}>Profile</p>
+                    </Link>
+                  )
+                }
+              </div>
+              <div className={buttonContainerStyle}>
+                {
+                  !connected && (
+                    <button className={buttonStyle} onClick={signIn}>Sign in</button>
+                  )
+                }
+                {
+                  connected && (
+                    <button
+                      className={modalButtonStyle}
+                      onClick={() => setIsModalOpen(true)}>
+                      <img
+                        src="create-post.svg"
+                        className={createPostStyle}
+                      />
+                    </button>
+                  )
+                }
+              </div>
             </div>
-            <div className={buttonContainerStyle}>
-              {
-                !connected && (
-                  <button className={buttonStyle} onClick={signIn}>Sign in</button>
-                )
-              }
-              {
-                connected && (
-                  <button
-                    className={modalButtonStyle}
-                    onClick={() => setIsModalOpen(true)}>
-                    <img
-                      src="create-post.svg"
-                      className={createPostStyle}
-                    />
-                  </button>
-                )
-              }
-            </div>
+          </nav>
+          <div className={appLayoutStyle}>
+            <Component {...pageProps} />
           </div>
-        </nav>
-        <div className={appLayoutStyle}>
-          <Component {...pageProps} />
+          {
+            isModalOpen && (
+              <Modal
+                setIsModalOpen={setIsModalOpen}
+              />
+            )
+          }
         </div>
-        {
-          isModalOpen && (
-            <Modal
-              setIsModalOpen={setIsModalOpen}
-            />
-          )
-        }
-      </div>
-    </AppContext.Provider>
+      </AppContext.Provider>
     </ChakraProvider>
   )
 }

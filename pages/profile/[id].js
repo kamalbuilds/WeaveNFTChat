@@ -14,7 +14,6 @@ import { getSigner, returnIpfsPathOrUrl } from '../../utils'
 import ReactMarkdown from 'react-markdown'
 
 import LENSHUB from '../../abi/lenshub'
-import Image from 'next/image'
 
 export default function Profile() {
   const [profile, setProfile] = useState()

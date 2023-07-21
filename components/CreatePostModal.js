@@ -98,7 +98,7 @@ export default function CreatePostModal({
       <div className={contentContainerStyle}>
         <div className={topBarStyle}>
           <div className={topBarTitleStyle}>
-            <p>
+            <p className={css`color: black;`}>
               Create post
             </p>
           </div>

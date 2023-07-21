@@ -87,7 +87,7 @@ export default function Home() {
                 <div className={profileContainerStyle} >
                   {
                     profile.picture && profile.picture.original ? (
-                      <Image
+                      <img
                         src={profile.picture.original.url}
                         className={profileImageStyle}
                         width="45"

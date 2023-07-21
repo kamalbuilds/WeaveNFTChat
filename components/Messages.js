@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Avatar, Flex, Text } from "@chakra-ui/react";
 
-const Messages = ({ messages }) => {
+const Messages = ({ messages , collection_name }) => {
   const AlwaysScrollToBottom = () => {
     const elementRef = useRef();
     useEffect(() => elementRef.current.scrollIntoView());
