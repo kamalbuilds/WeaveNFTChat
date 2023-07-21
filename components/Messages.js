@@ -8,11 +8,15 @@ import { AppContext } from "../context";
 import { Avatar } from "@chakra-ui/react";
 import Divider from "../components/Divider";
 import Footer from "../components/Footer";
-import LitJsSdk from "@lit-protocol/lit-js-sdk";
+import * as LitJsSdk from "@lit-protocol/lit-node-client";
+import { Button } from "@chakra-ui/react";
+import { decryptString } from "@lit-protocol/lit-node-client/src";
 
 const Messages = ({ collection_name }) => {
+
   const contractTxId = "87ff-LsWUZPUV8oXaEOetybPvEifRjqn1zbzXlNw7CQ";
-  const COLLECTION_NAME = "messages";
+  const COLLECTION_NAME = collection_name;
+  // default use "messages for testing"
   const { userAddress } = useContext(AppContext);
   console.log( userAddress,'profile')
   const [db, setDb] = useState(null);
@@ -21,7 +25,7 @@ const Messages = ({ collection_name }) => {
   const [messages, setMessages] = useState([]); // State to store messages
 
   const [inputMessage, setInputMessage] = useState("");
-
+  const [decryptedMsg, setDecryptedMsg] = useState("");
   const handleSendMessage = async () => {
     if (!inputMessage.trim().length) {
       return;
@@ -55,10 +59,10 @@ const Messages = ({ collection_name }) => {
     }
   };
 
-  const addMessageToDB = async () => {
+  const addMessageToDB = async (msg) => {
     try {
       const lit = new LitJsSdk.LitNodeClient()
-      await lit.connect()
+      await lit.connect();
 
       const authSig = await LitJsSdk.checkAndSignAuthMessage({
         chain: "polygon",
@@ -71,16 +75,19 @@ const Messages = ({ collection_name }) => {
       // more examples at: https://developer.litprotocol.com/accessControl/EVM/basicExamples#a-specific-wallet-address
       const accessControlConditions = [
         {
-          contractAddress: "",
-          standardContractType: "",
-          chain: "polygon",
-          method: "",
-          parameters: [":userAddress"],
+          contractAddress: '',
+          standardContractType: '',
+          chain: 'polygon',
+          method: 'eth_getBalance',
+          parameters: [
+            ':userAddress',
+            'latest'
+          ],
           returnValueTest: {
-            comparator: "=",
-            value: user.wallet,
-          },
-        },
+            comparator: '>=',
+            value: '10000000000000'
+          }
+        }
       ]
 
       const encryptedSymmetricKey = await lit.saveEncryptionKey({
@@ -88,7 +95,8 @@ const Messages = ({ collection_name }) => {
         authSig,
         chain: "polygon",
         symmetricKey,
-      })
+      });
+
       const blobToDataURI = (blob) => {
         return new Promise((resolve, reject) => {
           var reader = new FileReader()
@@ -201,7 +209,7 @@ const Messages = ({ collection_name }) => {
     }
   };
 
-  const decryptMsg = async () => {
+  const decryptMsg = async (docId) => {
     // retrieve specific document from your collection, then lit protocol will validate your encryption key and accessControlConditions to decrypt the data requested
 
     try {
@@ -243,14 +251,29 @@ const Messages = ({ collection_name }) => {
         dataURItoBlob(encryptedData),
         symmetricKey
       )
-      console.log("decryptedString", decryptedString)
-      setDecryptedMsg(decryptedString)
+      setDecryptedMsg((prevDecryptedMsg) => ({
+        ...prevDecryptedMsg,
+        [docId]: decryptedString,
+      }));
+      console.log("decryptedString", decryptedMsg)
     } catch (e) {
       console.error("decryptMsg", e)
     }
   }
 
-  console.log(messages,'f')
+  const singleDecryptMsg = async (docId) => {
+    // retrieve specific document from your collection, then lit protocol will validate your encryption key and accessControlConditions to decrypt the data requested
+      await decryptMsg(docId);
+  };
+
+  const handledecryptMsg = () => {
+    messages?.map((item, index) => {
+      decryptMsg(item.id);
+    });
+  };
+
+  // console.log(messages[0].id,'f');
+
   useEffect(() => {
     checkUser();
     console.log(user,'user') 
@@ -265,39 +288,78 @@ const Messages = ({ collection_name }) => {
 
   return (
     <>
-    <Flex w="100%" h="80%" overflowY="scroll" flexDirection="column" p="3">
-      {messages.map((item, index) => {
-        const isUserMessage = item.data.user_address === userAddress;
-        const messageStyle = {
-          justifyContent: isUserMessage ? "flex-end" : "flex-start",
-          alignSelf: isUserMessage ? "flex-end" : "flex-start",
-          maxWidth: "350px",
-          marginY: "1",
-          padding: "3",
-          background: isUserMessage ? "black" : "gray.100",
-          color: isUserMessage ? "white" : "black",
-        };
+          {/* Render the login and logout buttons based on the user's login status */}
+      {user ? (
+        <Flex justify="center" mt="2">
+          <Button onClick={logout} colorScheme="red" variant="outline">
+            Logout
+          </Button>
+        </Flex>
+      ) : (
+        <Flex justify="center" mt="2">
+          <Button onClick={login} colorScheme="teal">
+            Login
+          </Button>
+        </Flex>
+      )}
 
-        return (
-          <Flex key={index} w="100%" {...messageStyle}>
-            {!isUserMessage && (
-              <Avatar
-                name="Computer"
-                src="https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
-                bg="blue.300"
-              />
-            )}
-            <Flex
-              flex="1"
-              alignSelf="center"
-              p="2"
-            >
-              <Text>{item.data.date} by {item.data.user_address}</Text>
-            </Flex>
-          </Flex>
-        );
-      })}
-    </Flex>
+      {/* Add the "Decrypt Msg" button */}
+      <Flex justify="center" mt="2">
+        <Button onClick={handledecryptMsg} colorScheme="blue">
+          Decrypt All Msges
+        </Button>
+      </Flex>
+      
+      {/*  */}
+      <Flex w="100%" h="80%" overflowY="scroll" flexDirection="column" p="3">
+        {/* Render decrypted messages */}
+          {
+          messages.slice().reverse().map((item, index) => {
+            const isUserMessage = item.data.user_address === userAddress.toLowerCase();
+            console.log(isUserMessage,userAddress,"lets count")
+            const messageStyle = {
+              justifyContent: isUserMessage ? "flex-end" : "flex-start",
+              alignSelf: isUserMessage ? "flex-end" : "flex-start",
+              maxWidth: "350px",
+              marginY: "1",
+              padding: "3",
+              background: isUserMessage ? "black" : "gray.100",
+              color: isUserMessage ? "white" : "black",
+            };
+            const trimmedAddress = `${item.data.user_address.slice(0, 6)}...${item.data.user_address.slice(-4)}`;
+            return (
+              <Flex key={index} w="100%" {...messageStyle}>
+                {!isUserMessage && (
+                  <Avatar
+                    name="Computer"
+                    src="https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+                    bg="blue.300"
+                  />
+                )}
+                <Flex flex="1" alignSelf="center" p="3">
+                  <Text> By {trimmedAddress}</Text>
+                </Flex>
+
+                {/* Conditionally render the "Decrypt Msg" button */}
+                {!decryptedMsg[item.id] && (
+                      <Flex justify="right" mt="2">
+                        <Button onClick={() => singleDecryptMsg(item.id)} colorScheme="blue">
+                          Decrypt Msg
+                        </Button>
+                      </Flex>
+                    )}
+
+                {decryptedMsg[item.id] && (
+                <Flex flex="1" alignSelf="center" p="3">
+                  <Text> {decryptedMsg[item.id]} </Text>
+                </Flex>
+              )}
+              </Flex>
+            );
+          })
+        }
+      </Flex>
+
     <Divider />
     <Footer
       inputMessage={inputMessage}
