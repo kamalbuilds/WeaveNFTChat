@@ -94,7 +94,7 @@ function MyApp({ Component, pageProps }) {
             <div className={navContainerStyle}>
               <div className={linkContainerStyle}>
                 <Link href='/'>
-                  <p className={linkTextStyle}>Weave NFT-Chat</p>
+                  <p className={linkTextStyle}>💬</p>
                 </Link>
                 <Link href='/'>
                   <p className={linkTextStyle}>Home</p>
@@ -103,7 +103,7 @@ function MyApp({ Component, pageProps }) {
                   <p className={linkTextStyle}>Explore Profiles</p>
                 </Link>
                 <Link href='/group/a'>
-                  <p className={linkTextStyle}>Lets Chat</p>
+                  <p className={linkTextStyle}>Chat</p>
                 </Link>
                 {
                   userProfile && (

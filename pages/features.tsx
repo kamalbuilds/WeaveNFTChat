@@ -35,7 +35,7 @@ export default function ThreeLogosGrid() {
             src="https://storage.googleapis.com/ethglobal-api-production/organizations%2Fvxwti%2Flogo%2F1678645512720_Screen%20Shot%202023-03-12%20at%2011.25.01%20AM.png"
             alt="Lens protocol"
           />
-          <Text mt={5}>Lens Protocol's social graph is giving you a bird's-eye view of your community 🌏 </Text>
+          <Text mt={5}>Lens Protocol&apos;s social graph is giving you a bird&apos;s-eye view of your community. 🌏 </Text>
         </Flex>
 
         <Flex direction="column" alignItems="center">

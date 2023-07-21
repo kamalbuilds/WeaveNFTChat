@@ -16,6 +16,7 @@ import {
     useColorModeValue,
   } from '@chakra-ui/react';
 import Features from './features'
+import HowItWorks from './how-it-works';
   
   export default function CallToActionWithVideo() {
     return (
@@ -99,7 +100,7 @@ import Features from './features'
                     bg={'rgb(249, 92, 255)'}
                     _hover={{ bg: '#b900c9' }}>
                     Join chat
-                  </Button>
+            </Button>
             </Stack>
             <Stack
               align={'center'}
@@ -134,28 +135,6 @@ import Features from './features'
                 <Text color={'gray.500'}>
                   Scroll through their Lens feed and send them direct, private message. 
                 </Text>
-                <Stack
-                  spacing={{ base: 4, sm: 6 }}
-                  direction={{ base: 'column', sm: 'row' }}>
-                  <Button
-                    rounded={'full'}
-                    size={'lg'}
-                    fontWeight={'normal'}
-                    px={6}
-                    colorScheme={'red'}
-                    bg={'rgb(249, 92, 255)'}
-                    _hover={{ bg: '#b900c9' }}>
-                    Get started
-                  </Button>
-                  <Button
-                    rounded={'full'}
-                    size={'lg'}
-                    fontWeight={'normal'}
-                    px={6}
-                    leftIcon={<PlayIcon h={4} w={4} color={'gray.300'} />}>
-                    How It Works
-                  </Button>
-                </Stack>
               </Stack>
               <Flex
                 flex={1}
@@ -194,6 +173,11 @@ import Features from './features'
               </Flex>
             </Stack>
           </Container>
+          <Stack
+                  spacing={{ base: 4, sm: 6 }}
+                  direction={{ base: 'column', sm: 'row' }}>
+                  <HowItWorks />
+                </Stack>
           <Container maxW={'container.xl'} py={100} textAlign="center">
           <Features />
           </Container>
