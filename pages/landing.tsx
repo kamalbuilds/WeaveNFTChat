@@ -8,7 +8,9 @@ import {
     Button,
     Image,
     Icon,
-    IconButton,
+    Input,
+    InputGroup,
+    InputLeftAddon,
     createIcon,
     IconProps,
     useColorModeValue,
@@ -17,11 +19,48 @@ import Features from './features'
   
   export default function CallToActionWithVideo() {
     return (
-      <Container maxW={'7xl'}>
+      <Container maxW={'container.xl'}>
+      <Stack
+        spacing={{ base: 10, md: 20 }}
+        align={{ base: 'center', md: 'flex-start' }}
+        direction={{ base: 'column', md: 'row' }}
+        py={{ base: 1, md: 10 }}>
+        <InputGroup size="md" w={{ base: '100%', md: '70%' }} alignSelf="center">
+          <InputLeftAddon
+            pointerEvents="none"
+            fontSize={{ base: 'sm', md: 'md' }}
+            color="gray.600"
+            bg="white"
+            border="1px solid"
+            borderColor={useColorModeValue('gray.200', 'gray.700')}
+            rounded="xl"
+            px={4}
+            py={3}
+            fontWeight="semibold"
+            whiteSpace="nowrap"
+            shadow="md">
+            ETH wallet address
+          </InputLeftAddon>
+          <Input
+            type="wallet"
+            placeholder="0xEc86f5..."
+            rounded="xl"
+            py={4}
+            px={6}
+            bg={useColorModeValue('white', 'gray.800')}
+            borderColor={useColorModeValue('gray.200', 'gray.700')}
+            borderWidth={1}
+            _focus={{
+              borderColor: useColorModeValue('purple.500', 'purple.300'),
+              boxShadow: 'outline',
+            }}
+          />
+        </InputGroup>
+        </Stack>
         <Stack
           align={'center'}
           spacing={{ base: 8, md: 10 }}
-          py={{ base: 20, md: 28 }}
+          py={{ base: 1, md: 1 }}
           direction={{ base: 'column', md: 'row' }}>
           <Stack flex={1} spacing={{ base: 5, md: 10 }}>
             <Heading
