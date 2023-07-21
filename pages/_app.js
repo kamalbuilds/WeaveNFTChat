@@ -127,6 +127,7 @@ function MyApp({ Component, pageProps }) {
                       <img
                         src="create-post.svg"
                         className={createPostStyle}
+                        alt="create Post"
                       />
                     </button>
                   )
