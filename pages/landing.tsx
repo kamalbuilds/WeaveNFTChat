@@ -37,20 +37,18 @@ import {
                   position: 'absolute',
                   bottom: 1,
                   left: 0,
-                  bg: 'red.400',
+                  bg: 'rgb(249, 92, 255)',
                   zIndex: -1,
                 }}>
-                Write once,
+                Connect,
               </Text>
               <br />
-              <Text as={'span'} color={'red.400'}>
-                use everywhere!
+              <Text as={'span'} color={'rgb(249, 92, 255)'}>
+                with people that inspire you!
               </Text>
             </Heading>
             <Text color={'gray.500'}>
-              Snippy is a rich coding snippets app that lets you create your own
-              code snippets, categorize them, and even sync them in the cloud so
-              you can use them anywhere. All that is free!
+              Scroll through their Lens feed and send them direct, private message. 💬
             </Text>
             <Stack
               spacing={{ base: 4, sm: 6 }}
@@ -61,8 +59,8 @@ import {
                 fontWeight={'normal'}
                 px={6}
                 colorScheme={'red'}
-                bg={'red.400'}
-                _hover={{ bg: 'red.500' }}>
+                bg={'rgb(249, 92, 255)'}
+                _hover={{ bg: '#b900c9' }}>
                 Get started
               </Button>
               <Button
@@ -88,7 +86,7 @@ import {
               top={'-20%'}
               left={0}
               zIndex={-1}
-              color={useColorModeValue('red.50', 'red.400')}
+              color={useColorModeValue('#b900c9', 'rgb(249, 92, 255)')}
             />
             <Box
               position={'relative'}
