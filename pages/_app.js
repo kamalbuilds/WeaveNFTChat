@@ -8,6 +8,7 @@ import { createClient, STORAGE_KEY, authenticate as authenticateMutation, getCha
 import { parseJwt, refreshAuthToken } from '../utils'
 import { AppContext } from '../context'
 import Modal from '../components/CreatePostModal'
+import { ChakraProvider , theme} from '@chakra-ui/react'
 
 function MyApp({ Component, pageProps }) {
   const [connected, setConnected] = useState(true)
@@ -83,6 +84,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
+    <ChakraProvider theme={theme}>
     <AppContext.Provider value={{
       userAddress,
       profile: userProfile
@@ -141,6 +143,7 @@ function MyApp({ Component, pageProps }) {
         }
       </div>
     </AppContext.Provider>
+    </ChakraProvider>
   )
 }
 

@@ -5,16 +5,15 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     loader: 'akamai',
-    domains: ['ik.imagekit.io'], // Add 'ik.imagekit.io' to the array
-    path: ' ',
-  },
-  domains: [
+     path: ' ',
+    domains: [
       'ipfs.infura.io',
       'statics-polygon-lens-staging.s3.eu-west-1.amazonaws.com',
       'lens.infura-ipfs.io',
       '4everland.io',
-      ""
+      'ik.imagekit.io'
     ],
+  },
 }
 
 module.exports = nextConfig
