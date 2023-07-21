@@ -25,7 +25,7 @@ import Features from './features'
         align={{ base: 'center', md: 'flex-start' }}
         direction={{ base: 'column', md: 'row' }}
         py={{ base: 1, md: 10 }}>
-        <InputGroup size="md" w={{ base: '100%', md: '70%' }} alignSelf="center">
+        <InputGroup size="lg" w={{ base: '100%', md: '70%' }} alignSelf="center">
           <InputLeftAddon
             pointerEvents="none"
             fontSize={{ base: 'sm', md: 'md' }}
@@ -56,6 +56,16 @@ import Features from './features'
             }}
           />
         </InputGroup>
+        <Button
+                rounded={'full'}
+                size={'lg'}
+                fontWeight={'semibold'}
+                px={6}
+                colorScheme={'pink'}
+                bg={'rgb(249, 92, 255)'}
+                _hover={{ bg: '#b900c9' }}>
+                Join chat
+              </Button>
         </Stack>
         <Stack
           align={'center'}
@@ -124,7 +134,7 @@ import Features from './features'
               w={'150%'}
               h={'150%'}
               position={'absolute'}
-              top={'-20%'}
+              top={'-30%'}
               left={0}
               zIndex={-1}
               color={useColorModeValue('#b900c9', 'rgb(249, 92, 255)')}
