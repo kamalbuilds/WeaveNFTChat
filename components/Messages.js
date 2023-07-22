@@ -119,7 +119,7 @@ const Messages = ({ collection_address }) => {
         {
           date: db.ts(),
           user_address: db.signer(),
-          collection_address: collection_address,
+          collection_address: COLLECTION_NAME,
           encryptedData: encryptedData,
           encryptedSymmetricKey: LitJsSdk.uint8arrayToString(
             encryptedSymmetricKey,
@@ -215,7 +215,7 @@ const Messages = ({ collection_address }) => {
   const getMessages = async () => {
     try {
       // const _messages = await db.cget(COLLECTION_NAME);
-      const _messages = await db.get(COLLECTION_NAME, ["collection_address"], [ "collection_address", "==", collection_address ]);
+      const _messages = await db.get(COLLECTION_NAME, ["collection_address"], [ "collection_address", "==", COLLECTION_NAME ]);
       console.log("getMessages", _messages);
       setMessages(_messages);
     } catch (e) {

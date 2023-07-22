@@ -212,9 +212,6 @@ const emptyPostHandleStyle = css`
 
 const postHeaderStyle = css`
   margin: 0px 0px 15px;
-  color: #d7dddc;
-  font-weight: 500;
-  font-size: 24px;
 `
 
 const publicationWrapper = css`
@@ -273,7 +270,6 @@ const rightColumnStyle = css`
 
 const containerStyle = css`
   padding-top: 50px;
-  width: 900px;
 `
 
 const buttonStyle = css`

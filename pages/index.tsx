@@ -20,7 +20,6 @@ import HowItWorks from './how-it-works';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import Grid from '../components/Grid';
 
 
 export default function CallToActionWithVideo() {
@@ -217,7 +216,6 @@ export default function CallToActionWithVideo() {
         <Container maxW={'container.xl'} py={100} textAlign="center">
         <Features />
         </Container>
-        <Grid />
     </Container>
   );
 }

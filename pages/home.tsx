@@ -84,7 +84,7 @@ export default function Home() {
   }
 
   return (
-    <div className={container}>
+    <div>
       <div className={searchContainerStyle}>
         <SearchInput
           placeholder='Search'
@@ -146,12 +146,6 @@ export default function Home() {
     </div>
   )
 }
-
-const container = css`
-  padding: 0px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-`
 
 const searchContainerStyle = css`
   padding: 40px 0px 30px;

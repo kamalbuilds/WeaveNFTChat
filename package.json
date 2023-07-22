@@ -29,7 +29,6 @@
     "ramda": "^0.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.10.1",
     "react-markdown": "^8.0.3",
     "react-modal": "^3.15.1",
     "typescript": "^5.1.6",
