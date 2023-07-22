@@ -52,7 +52,7 @@ export const SignTransaction = () => {
 
       toast({
         title: "Success Sign Transaction",
-        position: "top",
+        position: "bottom",
         status: "success",
         isClosable: true,
       });
@@ -61,7 +61,7 @@ export const SignTransaction = () => {
 
       toast({
         title: (error as Error).message,
-        position: "top",
+        position: "bottom",
         status: "error",
         isClosable: true,
       });
@@ -71,7 +71,7 @@ export const SignTransaction = () => {
   const handleClick = (key: "to" | "value" | "gasLimit"): void => void resetField(key);
 
   return (
-    <Flex textAlign="center" fontSize="xl" direction="column">
+    <Flex textAlign="center" fontSize="xl" direction="column" className="text-white">
       <VStack as="form" spacing={6} onSubmit={handleSubmit(onSubmit)}>
         <VStack spacing={3} my={2}>
           <Flex w="100%" alignItems="center" flexDirection="column">
@@ -149,9 +149,6 @@ export const SignTransaction = () => {
           </Flex>
         </VStack>
         <Button type="submit">Sign Transaction</Button>
-        <Box wordBreak="break-word">
-          <Text>result: {result}</Text>
-        </Box>
       </VStack>
     </Flex>
   );

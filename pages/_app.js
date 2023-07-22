@@ -104,7 +104,7 @@ function MyApp({ Component, pageProps }) {
             <div className={navContainerStyle}>
               <div className={linkContainerStyle}>
                 <Link href='/'>
-                  <p className={logo}>💬 <span>WeaveNFTChat</span></p>
+                  <p className={logo}>💬 <span className='text-xl'>WeaveNFTChat</span></p>
                 </Link>
                 <Link href='/home'>
                   <p className={linkTextStyle}>Home</p>
@@ -114,6 +114,9 @@ function MyApp({ Component, pageProps }) {
                 </Link>
                 <Link href='/allgroups'>
                   <p className={linkTextStyle}>Explore Communities</p>
+                </Link>
+                <Link href='/webmax'>
+                  <p className={linkTextStyle}>Send Txns</p>
                 </Link>
                 {
                   userProfile && (

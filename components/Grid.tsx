@@ -9,6 +9,13 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
+  import {
+    FcDatabase,
+    FcLock,
+    FcBusinessman,
+    FcLineChart,
+    FcCheckmark,
+  } from 'react-icons/fc';
   import { ReactElement } from 'react';
   import {
     FcAbout,
@@ -59,7 +66,7 @@ import {
     );
   };
   
-  export default function Grid() {
+  export default function Grid () {
     return (
       <Box p={4} className='text-white'>
         <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
@@ -74,42 +81,58 @@ import {
         <Container maxW={'5xl'} mt={12}>
           <Flex flexWrap="wrap" gridGap={6} justify="center">
             <Card
-              heading={'Heading'}
-              icon={<Icon as={FcAssistant} w={10} h={10} />}
-              description={
-                'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
-              }
-              href={'#'}
-            />
-            <Card
-              heading={'Heading'}
+              heading={'Group NFT Chat'}
               icon={<Icon as={FcCollaboration} w={10} h={10} />}
               description={
-                'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
+                'Engage and interact with your NFTs in dedicated social groups.'
               }
               href={'#'}
             />
             <Card
-              heading={'Heading'}
+              heading={'Cross-Chain Messaging'}
+              icon={<Icon as={FcLineChart} w={10} h={10} />}
+              description={
+                'Seamlessly communicate across different blockchain networks.'
+              }
+              href={'#'}
+            />
+            <Card
+              heading={'Decentralized Database'}
+              icon={<Icon as={FcDatabase} w={10} h={10} />}
+              description={
+                "Safeguard user data and conversations with Weave DB's decentralized capabilities."
+              }
+              href={'#'}
+            />
+            <Card
+              heading={'Secure Chat Environment'}
+              icon={<Icon as={FcLock} w={10} h={10} />}
+              description={
+                'Foster a secure chat environment with robust access control using the Lit Protocol.'
+              }
+              href={'#'}
+            />
+            <Card
+              heading={'Simplified User Onboarding'}
+              icon={<Icon as={FcBusinessman} w={10} h={10} />}
+              description={
+                'Use popular authentication methods like Google OAuth and WebAuth for easy sign-up.'
+              }
+              href={'#'}
+            />
+            <Card
+              heading={'Comprehensive Social Graph'}
+              icon={<Icon as={FcCheckmark} w={10} h={10} />}
+              description={
+                'Explore your social interactions within the NFT landscape with the Lens social graph protocol.'
+              }
+              href={'#'}
+            />
+            <Card
+              heading={'Immutable Message Storage'}
               icon={<Icon as={FcDonate} w={10} h={10} />}
               description={
-                'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
-              }
-              href={'#'}
-            />
-            <Card
-              heading={'Heading'}
-              icon={<Icon as={FcManager} w={10} h={10} />}
-              description={
-                'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
-              }
-              href={'#'}
-            />
-            <Card
-              heading={'Heading'}
-              icon={<Icon as={FcAbout} w={10} h={10} />}
-              description={
-                'Lorem ipsum dolor sit amet catetur, adipisicing elit.'
+                'Ensure the durability and permanence of user messages with Arweave integration.'
               }
               href={'#'}
             />
@@ -117,4 +140,4 @@ import {
         </Container>
       </Box>
     );
-  }
+  };

@@ -13,10 +13,8 @@ import { Button } from "@chakra-ui/react";
 import { decryptString } from "@lit-protocol/lit-node-client/src";
 
 const Messages = ({ collection_address }) => {
-
   const contractTxId = "87ff-LsWUZPUV8oXaEOetybPvEifRjqn1zbzXlNw7CQ";
   const COLLECTION_NAME = "test";
-  // default use "messages for testing"
   const { userAddress } = useContext(AppContext);
   console.log( userAddress,'profile')
   const [db, setDb] = useState(null);
@@ -138,8 +136,6 @@ const Messages = ({ collection_address }) => {
       console.error("addMsg", e)
     }
   }
-
-
   // Function to log in the user
   const login = async () => {
     if (!window.ethereum) {
@@ -327,7 +323,7 @@ const Messages = ({ collection_address }) => {
         {/* Render decrypted messages */}
           {
           messages.slice().reverse().map((item, index) => {
-            const isUserMessage = item.user_address === userAddress.toLowerCase();
+            const isUserMessage =  item.user_address === userAddress.toLowerCase();
             console.log(isUserMessage,userAddress,"lets count")
             const messageStyle = {
               justifyContent: isUserMessage ? "flex-end" : "flex-start",
@@ -338,7 +334,9 @@ const Messages = ({ collection_address }) => {
               background: isUserMessage ? "black" : "gray.100",
               color: isUserMessage ? "white" : "black",
             };
-            const trimmedAddress = `${item.user_address.slice(0, 6)}...${item.user_address.slice(-4)}`;
+            const trimmedAddress = item && item.user_address
+            ? `${item.user_address.slice(0, 6)}...${item.user_address.slice(-4)}`
+            : '';
             return (
               <Flex key={index} w="100%" {...messageStyle}>
                 {!isUserMessage && (

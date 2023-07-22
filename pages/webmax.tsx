@@ -15,6 +15,14 @@ import {
   theme,
   useColorModeValue,
   VStack,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
 } from "@chakra-ui/react";
 import { Connect } from "../components/webmax/Connect";
 // import logo from "./logo.png";
@@ -28,10 +36,19 @@ const links = {
 
 export default function App () {
   const [tabIndex, setTabIndex] = useState(0);
+  const [isConnectModalOpen, setIsConnectModalOpen] = useState(false);
 
   // Function to handle tab changes
   const handleTabsChange = (index) => {
     setTabIndex(index);
+  };
+
+  const handleConnectModalOpen = () => {
+    setIsConnectModalOpen(true);
+  };
+
+  const handleConnectModalClose = () => {
+    setIsConnectModalOpen(false);
   };
 
   return (
@@ -48,7 +65,7 @@ export default function App () {
                   fontWeight="extrabold"
                   pr={3}
                 >
-                  Webmax.js
+                  Powered by IntMax
                 </Text>
               </Text>
               <HStack spacing={10}>
@@ -60,16 +77,13 @@ export default function App () {
               </HStack>
               <Text className="text-white text-4xl">Send Transactions Walletless</Text>
             </VStack>
-            <Tabs variant="soft-rounded" index={tabIndex} onChange={handleTabsChange}>
+            <Button onClick={handleConnectModalOpen}>Connect</Button>
+            <Tabs variant="soft-rounded" index={tabIndex} onChange={handleTabsChange} className="my-4">
               <TabList justifyContent="center" flexWrap="wrap">
-                <Tab p={{ base: 4, sm: "auto" }}>Connect to Account</Tab>
                 <Tab p={{ base: 4, sm: "auto" }}>Sign Transaction</Tab>
                 <Tab p={{ base: 4, sm: "auto" }}>Send Transaction</Tab>
               </TabList>
               <TabPanels>
-                <TabPanel>
-                  <Connect />
-                </TabPanel>
                 <TabPanel>
                   <SignTransaction />
                 </TabPanel>
@@ -80,6 +94,21 @@ export default function App () {
             </Tabs>
           </Flex>
         </Grid>
+        <Modal isOpen={isConnectModalOpen} onClose={handleConnectModalClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Connect Details</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Connect />
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" onClick={handleConnectModalClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       </Box>
   );
 };

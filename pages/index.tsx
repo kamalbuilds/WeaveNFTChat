@@ -149,7 +149,7 @@ export default function CallToActionWithVideo() {
                 </Text>
                 <br />
                 <Text as={'span'} color={'rgb(249, 92, 255)'}>
-                  with people that inspire you! 💬
+                  with the group that inspires you! 💬
                 </Text>
               </Heading>
               <Text color={'white'}>

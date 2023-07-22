@@ -35,7 +35,7 @@ export const Connect = () => {
   };
 
   return (
-    <Flex textAlign="center" fontSize="xl" direction="column" pt={6} className="text-white">
+    <Flex textAlign="center" fontSize="xl" direction="column" pt={6}>
       <VStack spacing={6}>
         <Button onClick={handleConnect}>Connect to account</Button>
         <Box wordBreak="break-word">

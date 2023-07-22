@@ -20,7 +20,7 @@ export default function ThreeLogosGrid() {0
 
     <Box p={4} textColor={'white'}>
      <Flex direction="column" alignItems="center" mb={4}> {/* Add margin-bottom to create distance */}
-        <Text fontSize="sm" mt={5}>Powered by</Text>
+        <Text fontSize="lg" mt={5}>Powered by</Text>
       </Flex>
       <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={8}>
         <Flex direction="column" alignItems="center">
@@ -50,6 +50,11 @@ export default function ThreeLogosGrid() {0
         <Flex direction="column" alignItems="center">
           <Avatar size="xl" src="https://cryptocurrencyjobs.co/startups/assets/logos/fleek.png" />
           <Text mt={5}>Fleek suite of tools made this ship fly. 🛸</Text>
+        </Flex>
+
+        <Flex direction="column" alignItems="center">
+          <Avatar size="xl" src="https://breakorbit.vc/wp-content/uploads/2021/11/intmax_logo.png" />
+          <Text mt={5}>IntMax gives the power of Transactions 💵</Text>
         </Flex>
       </Grid>
     </Box>
