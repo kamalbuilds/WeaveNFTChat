@@ -100,7 +100,10 @@ export default function Home() {
       <div className={listItemContainerStyle}>
         {
           loadingState === 'no-results' && (
-            <h2 style={{ color: 'white' }}>No results....</h2>
+            <div>
+              <h2 style={{ color: 'black' }}><b>No results...</b></h2>
+              <img src='https://media4.giphy.com/media/jM4bWFBKpSFeo/giphy.gif?cid=ecf05e4743pvcjmh7vovwq3mac1ileztlnb135nvov59848x&ep=v1_stickers_search&rid=giphy.gif&ct=s' />
+            </div>
           )
         }
         {
@@ -151,7 +154,7 @@ const searchContainerStyle = css`
 const latestPostStyle = css`
   margin: 23px 0px 5px;
   word-wrap: break-word;
-  color: #d7dddc;
+  color: #black;
 `
 
 const profileContainerStyle = css`
@@ -187,7 +190,8 @@ const profileInfoStyle = css`
 
 const nameStyle = css`
   margin: 0 0px 5px;
-  color: #d7dddc;
+  color: #black;
+  font-weight: 600;
 `
 
 const handleStyle = css`
@@ -197,7 +201,7 @@ const handleStyle = css`
 
 const itemTypeStyle = css`
   margin: 0;
-  color: #d7dddc;
+  color: #black;
   font-weight: 500;
   font-size: 14px;
   margin-bottom: 16px;

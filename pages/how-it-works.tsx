@@ -27,16 +27,16 @@ export default function HowItWorks() {
           shadow='md'
         >
           <Text>
+            <b>To join a group:</b>
+            <br/><br/>
             1) Click on &quot;Sign In&quot; to connect your Ethereum wallet
             <br/> 
-            <br/> 
             2) Copy and Paste your NFT Collection smart contract address (you can find it on Etherscan or OpenSea)
-            <br/> <br/> 
+            <br/> 
             3) Type the Topic name (example: Airdrop)
             <br/>
-            <br/> 
             4) Click on &quot;Join Chat&quot;
-            <br/> <br/> 
+            <br/> 
             5) Enjoy! 
             </Text> 
         </Box>

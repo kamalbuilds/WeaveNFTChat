@@ -4,7 +4,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background-color: #4A5568;
   min-height: 100vh;
 }
 
@@ -16,9 +15,7 @@ a {
 * {
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
+  background-color: transparent;
 }
 
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

@@ -21,6 +21,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
+
 export default function CallToActionWithVideo() {
   const [topic,setTopic] = useState('');
   const [nft_address,setNft_address] = useState('');
@@ -152,7 +153,7 @@ export default function CallToActionWithVideo() {
                 </Text>
               </Heading>
               <Text color={'white'}>
-                Scroll through their Lens feed and send them direct, private message. 
+                Explore. Discuss. Scroll through Lens feeds and create groups meaningful to you.  
               </Text>
             </Stack>
             <Flex

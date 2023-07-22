@@ -107,18 +107,18 @@ function MyApp({ Component, pageProps }) {
                   <p className={logo}>💬</p>
                 </Link>
                 <Link href='/home'>
-                  <p className={linkTextStyle}>Home</p>
+                  <p className={linkTextStyle}>HOME</p>
                 </Link>
                 <Link href='/profiles'>
-                  <p className={linkTextStyle}>Explore Profiles</p>
+                  <p className={linkTextStyle}>EXPLORE PROFILES</p>
                 </Link>
                 <Link href='/group/a'>
-                  <p className={linkTextStyle}>Chat</p>
+                  <p className={linkTextStyle}>CHAT</p>
                 </Link>
                 {
                   userProfile && (
                     <Link href={`/profile/${userProfile.id}`}>
-                      <p className={linkTextStyle}>Profile</p>
+                      <p className={linkTextStyle}>PROFILE</p>
                     </Link>
                   )
                 }
@@ -126,7 +126,7 @@ function MyApp({ Component, pageProps }) {
               <div className={buttonContainerStyle}>
                 {
                   !connected && (
-                    <button className={buttonStyle} onClick={signIn}>Sign in</button>
+                    <button className={buttonStyle} onClick={signIn}>SIGN IN </button>
                   )
                 }
                 {
@@ -160,7 +160,6 @@ function MyApp({ Component, pageProps }) {
 const appLayoutStyle = css`
   margin: 0 auto;
   padding: 78px 100px 100px;
-  background-color: #4A5568;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -173,6 +172,7 @@ const linkTextStyle = css`
   font-weight: 600;
   font-size: 15px;
   color: white;
+  letter-spacing: .75px;
 `
 
 const logo = css`
@@ -189,7 +189,7 @@ const iconStyle = css`
 
 const modalButtonStyle = css`
   /* Base styles for the button */
-  background-color: rgb(249, 92, 255);
+  background-color: #3EF9A5;
   outline: none;
   border: none;
   cursor: pointer;
@@ -203,7 +203,7 @@ const modalButtonStyle = css`
 
   /* Hover styles for the button */
   &:hover {
-    background-color: #3EF9A5;
+    background-color: rgb(249, 92, 255);
   }
 
   /* Additional styles for the colored button */
@@ -218,7 +218,7 @@ const createPostStyle = css`
 `
 
 const navStyle = css`
-  background-color: black;
+  background-color: #0F1113;
   padding: 15px 30px;
   display: flex;
   position: fixed;
@@ -249,20 +249,20 @@ const buttonContainerStyle = css`
 const buttonStyle = css`
   border: none;
   outline: none;
-  margin-left: 15px;
+  margin-left: 10px;
   background-color: black;
   color: #340036;
-  padding: 13px;
+  padding: 10px;
   border-radius: 25px;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  background-color: rgb(249, 92, 255);
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #3EF9A5;
   transition: all .35s;
   width: 160px;
   letter-spacing: .75px;
   &:hover {
-    background-color: rgba(249, 92, 255, .75);
+    background-color: rgb(249, 92, 255);
   }
 `
 

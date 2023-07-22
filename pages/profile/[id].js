@@ -191,7 +191,7 @@ export default function Profile() {
 
 const bioStyle = css`
   font-weight: 500;
-  color: #d7dddc;
+  color: #black;
 `
 
 const emptyPostTextStyle = css`
@@ -220,7 +220,7 @@ const publicationWrapper = css`
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, .1);
   p {
-    color: white;
+    color: black;
   }
 `
 
@@ -230,7 +230,9 @@ const publicationContentStyle = css`
 
 const nameStyle = css`
   margin: 15px 0px 5px;
-  color: #d7dddc;
+  color: #black;
+  font-weight: 600;
+
 `
 
 const handleStyle = css`
@@ -249,9 +251,9 @@ const headerStyle = css`
 
 const profileImageStyle = css`
   width: 100px;
-  height: 100px;
+  height: 10px;
   max-width: 200px;
-  border: 0px solid white;
+  border: 10px solid white;
   border-radius: 12px;
 `
 
@@ -271,10 +273,21 @@ const containerStyle = css`
 `
 
 const buttonStyle = css`
-  border: 0px solid rgb(249, 92, 255);
+  border: 2px solid rgb(249, 92, 255);
   outline: none;
   margin-top: 15px;
-  color: rgb(249, 92, 255);
+  background-color: #3EF9A5;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+
+  /* Hover styles for the button */
+  &:hover {
+    background-color: rgb(249, 92, 255);
+  }
+  outline: none;
+  margin-top: 15px;
   padding: 13px;
   border-radius: 5px;
   cursor: pointer;
@@ -283,7 +296,6 @@ const buttonStyle = css`
   transition: all .35s;
   font-weight: 700;
   width: 100%;
-  background-color: rgba(0, 0, 0, .75);
   letter-spacing: .75px;
   &:hover {
     background-color: rgb(249, 92, 255);

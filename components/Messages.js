@@ -325,32 +325,66 @@ const Messages = ({ collection_address }) => {
       {/*  */}
       <Flex w="100%" h="80%" overflowY="scroll" flexDirection="column" p="3">
         {/* Render decrypted messages */}
-          {
-          messages.slice().reverse().map((item, index) => {
-            const isUserMessage = item.user_address === userAddress.toLowerCase();
-            console.log(isUserMessage,userAddress,"lets count")
-            const messageStyle = {
-              justifyContent: isUserMessage ? "flex-end" : "flex-start",
-              alignSelf: isUserMessage ? "flex-end" : "flex-start",
-              maxWidth: "350px",
-              marginY: "1",
-              padding: "3",
-              background: isUserMessage ? "black" : "gray.100",
-              color: isUserMessage ? "white" : "black",
-            };
-            const trimmedAddress = `${item.user_address.slice(0, 6)}...${item.user_address.slice(-4)}`;
-            return (
-              <Flex key={index} w="100%" {...messageStyle}>
-                {!isUserMessage && (
-                  <Avatar
-                    name="Computer"
-                    src="https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
-                    bg="blue.300"
-                  />
-                )}
-                <Flex flex="1" alignSelf="center" p="3">
-                  <Text> By {trimmedAddress}</Text>
-                </Flex>
+        {messages.slice().reverse().map((item, index) => {
+          const isUserMessage = item.user_address === userAddress.toLowerCase();
+
+          // Custom message style
+          const messageStyle = {
+            justifyContent: isUserMessage ? "flex-end" : "flex-start",
+            alignSelf: isUserMessage ? "flex-end" : "flex-start",
+            maxWidth: "350px",
+            marginY: "1",
+            padding: "3",
+            color: "black",
+            position: "relative",
+            padding: "10px 20px",
+            borderRadius: "25px",
+            ...(isUserMessage
+              ? {
+                  background: "#0B93F6",
+                  "&:before": {
+                    right: "-7px",
+                    width: "20px",
+                    backgroundColor: "#0B93F6",
+                    borderBottomLeftRadius: "16px 14px",
+                  },
+                  "&:after": {
+                    right: "-26px",
+                    width: "26px",
+                    backgroundColor: "white",
+                    borderBottomLeftRadius: "10px",
+                  },
+                }
+              : {
+                  background: "#E5E5EA",
+                  "&:before": {
+                    left: "-7px",
+                    width: "20px",
+                    backgroundColor: "#E5E5EA",
+                    borderBottomRightRadius: "16px",
+                  },
+                  "&:after": {
+                    left: "-26px",
+                    width: "26px",
+                    backgroundColor: "white",
+                    borderBottomRightRadius: "10px",
+                  },
+                }),
+          };
+
+          const trimmedAddress = `${item.user_address.slice(0, 6)}...${item.user_address.slice(-4)}`;
+          return (
+            <Flex key={index} w="100%" {...messageStyle}>
+              {!isUserMessage && (
+                <Avatar
+                  name="Computer"
+                  src="https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+                  bg="blue.300"
+                />
+              )}
+              <Flex flex="1" alignSelf="center" p="3">
+                <Text> By {trimmedAddress}</Text>
+              </Flex>
 
                 {/* Conditionally render the "Decrypt Msg" button */}
                 {!decryptedMsg[item.id] && (

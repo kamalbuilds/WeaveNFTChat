@@ -20,9 +20,9 @@ const inputStyle = css`
   padding: 15px 20px;
   font-size: 16px;
   border-radius: 25px;
-  border: 2px solid rgba(0, 0, 0, .04);
+  border: 0.5px solid gray;
   transition: all .4s;
   width: 300px;
-  background-color: #272929;
-  color: white;
+  background-color: white;
+  color: black;
 `
