@@ -129,8 +129,9 @@ const searchContainerStyle = css`
 
 const bioStyle = css`
   margin: 23px 0px 5px;
-  color: #d7dddc;
+  color: #black;
   word-wrap: break-word;
+
 `
 
 const profileContainerStyle = css`
@@ -163,11 +164,13 @@ const listItemStyle = css`
 
 const profileInfoStyle = css`
   margin-left: 10px;
+  color: black;
 `
 
 const nameStyle = css`
   margin: 0 0px 5px;
-  color: #d7dddc;
+  color: #black;
+  font-weight: 600;
 `
 
 const handleStyle = css`
