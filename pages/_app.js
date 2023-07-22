@@ -104,7 +104,7 @@ function MyApp({ Component, pageProps }) {
             <div className={navContainerStyle}>
               <div className={linkContainerStyle}>
                 <Link href='/'>
-                  <p className={logo}>💬</p>
+                  <p className={logo}>💬 <span>WeaveNFTChat</span></p>
                 </Link>
                 <Link href='/home'>
                   <p className={linkTextStyle}>Home</p>
@@ -160,7 +160,7 @@ function MyApp({ Component, pageProps }) {
 const appLayoutStyle = css`
   margin: 0 auto;
   padding: 78px 100px 100px;
-  background-color: #4A5568;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;

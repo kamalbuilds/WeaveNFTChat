@@ -4,7 +4,6 @@ module.exports = {
     {
       "slug": "straight-raspy-oyster",
       "distDir": ".next",
-      "buildCommand": "npm run build"
     }
   ]
 };
