@@ -115,6 +115,7 @@ export default function CallToActionWithVideo() {
                   colorScheme={'pink'}
                   bg={'rgb(249, 92, 255)'}
                   _hover={{ bg: '#b900c9' }}
+                  color="black"
                   onClick={handleJoinChat}
                   >
                   Join chat
@@ -198,11 +199,12 @@ export default function CallToActionWithVideo() {
                   <Button
                     rounded={'full'}
                     size={'lg'}
-                    fontWeight={'normal'}
+                    fontWeight={'bold'}
+
                     px={6}
-                    colorScheme={'red'}
-                    bg={'red.400'}
-                    _hover={{ bg: 'red.500' }}>
+                    colorScheme={'gray'}
+                    bg={'#3EF9A5'}
+                    _hover={{ bg: 'rgb(249, 92, 255);' }}>
                       <Link href="/home">
                         Get started
                       </Link>

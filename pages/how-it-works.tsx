@@ -11,16 +11,16 @@ export default function HowItWorks() {
         onClick={onToggle}
         rounded={'full'}
         size={'lg'}
-        fontWeight={'normal'}
+        fontWeight={'bold'}
         px={6}
-        leftIcon={<PlayIcon h={4} w={4} color={'gray.300'} />}
+        leftIcon={<PlayIcon h={4} w={4} color={'gray.700'} />}
       >
         How It Works
       </Button>
       <Collapse in={isOpen} animateOpacity>
         <Box
           p='40px'
-          color='black'
+          color='gray.700'
           mt='4'
           bg='gray.100'
           rounded='lg'

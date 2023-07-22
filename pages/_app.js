@@ -134,11 +134,7 @@ function MyApp({ Component, pageProps }) {
                     <button
                       className={modalButtonStyle}
                       onClick={() => setIsModalOpen(true)}>
-                      <img
-                        src="create-post.svg"
-                        className={createPostStyle}
-                        alt="create Post"
-                      />
+                      Create post
                     </button>
                   )
                 }
@@ -185,11 +181,29 @@ const iconStyle = css`
 `
 
 const modalButtonStyle = css`
-  background-color: transparent;
+  /* Base styles for the button */
+  background-color: rgb(249, 92, 255);
   outline: none;
   border: none;
   cursor: pointer;
-`
+  border-radius: 50%;
+
+  /* Styles for the button text */
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+
+  /* Hover styles for the button */
+  &:hover {
+    background-color: #3EF9A5;
+  }
+
+  /* Additional styles for the colored button */
+  &.coloredButton {
+
+  }
+`;
 
 const createPostStyle = css`
   height: 35px;
