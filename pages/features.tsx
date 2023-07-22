@@ -17,7 +17,7 @@ const ResponsiveLogo = chakra('img', {
 export default function ThreeLogosGrid() {
   return (
 
-    <Box p={4}>
+    <Box p={4} textColor={'white'}>
      <Flex direction="column" alignItems="center" mb={4}> {/* Add margin-bottom to create distance */}
         <Text fontSize="sm" mt={5}>Powered by</Text>
       </Flex>

@@ -7,14 +7,15 @@ import { useRouter } from "next/router";
 
 const Group = () => {
   const router = useRouter();
-  const { address } = router.query;
+  const { collection_address , topic } = router.query;
 
   return (
-      <Flex w="100%" h="100%">
+      <Flex w="60%" h="100%">
         <Flex w={["100%", "100%", "100%"]} h="100%" flexDir="column">
+          <h1 className="text-center text-2xl my-8 text-white ">Agenda: {topic} </h1>
           <Header />
           <Divider />
-          <Messages  collection_name={address}/>
+          <Messages  collection_name={collection_address}  />
         </Flex>
       </Flex>
   );

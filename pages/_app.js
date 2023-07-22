@@ -106,7 +106,7 @@ function MyApp({ Component, pageProps }) {
                 <Link href='/'>
                   <p className={linkTextStyle}>💬</p>
                 </Link>
-                <Link href='/'>
+                <Link href='/home'>
                   <p className={linkTextStyle}>Home</p>
                 </Link>
                 <Link href='/profiles'>

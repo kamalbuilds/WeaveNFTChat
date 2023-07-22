@@ -26,6 +26,7 @@ const Messages = ({ collection_name }) => {
 
   const [inputMessage, setInputMessage] = useState("");
   const [decryptedMsg, setDecryptedMsg] = useState("");
+  console.log(inputMessage,"ui")
   const handleSendMessage = async () => {
     if (!inputMessage.trim().length) {
       return;
@@ -71,6 +72,7 @@ const Messages = ({ collection_name }) => {
       const { encryptedString, symmetricKey } = await LitJsSdk.encryptString(
         msg
       )
+      console.log(encryptedString ,"encstrung")
 
       // more examples at: https://developer.litprotocol.com/accessControl/EVM/basicExamples#a-specific-wallet-address
       const accessControlConditions = [
