@@ -268,6 +268,7 @@ const rightColumnStyle = css`
 
 const containerStyle = css`
   padding-top: 50px;
+  width: 900px;
 `
 
 const buttonStyle = css`

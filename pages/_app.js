@@ -112,8 +112,8 @@ function MyApp({ Component, pageProps }) {
                 <Link href='/profiles'>
                   <p className={linkTextStyle}>Explore Profiles</p>
                 </Link>
-                <Link href='/group/a'>
-                  <p className={linkTextStyle}>Chat</p>
+                <Link href='/allgroups'>
+                  <p className={linkTextStyle}>Explore Communities</p>
                 </Link>
                 {
                   userProfile && (
