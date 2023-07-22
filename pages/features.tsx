@@ -1,4 +1,5 @@
 import { Box, Grid, chakra, Text, Flex } from '@chakra-ui/react';
+import { Avatar } from '@chakra-ui/react';
 
 const ResponsiveLogo = chakra('img', {
   baseStyle: {
@@ -14,7 +15,7 @@ const ResponsiveLogo = chakra('img', {
   },
 });
 
-export default function ThreeLogosGrid() {
+export default function ThreeLogosGrid() {0
   return (
 
     <Box p={4} textColor={'white'}>
@@ -44,6 +45,11 @@ export default function ThreeLogosGrid() {
             alt="Lit protocol"
           />
           <Text mt={5}>Lit protocol makes sure that only invited guests enter your chat ✅</Text>
+        </Flex>
+
+        <Flex direction="column" alignItems="center">
+          <Avatar size="xl" src="https://cryptocurrencyjobs.co/startups/assets/logos/fleek.png" />
+          <Text mt={5}>Fleek suite of tools made this ship fly. 🛸</Text>
         </Flex>
       </Grid>
     </Box>
