@@ -104,7 +104,7 @@ function MyApp({ Component, pageProps }) {
             <div className={navContainerStyle}>
               <div className={linkContainerStyle}>
                 <Link href='/'>
-                  <p className={linkTextStyle}>💬</p>
+                  <p className={logo}>💬</p>
                 </Link>
                 <Link href='/home'>
                   <p className={linkTextStyle}>Home</p>
@@ -172,6 +172,13 @@ const linkTextStyle = css`
   margin-right: 40px;
   font-weight: 600;
   font-size: 15px;
+  color: white;
+`
+
+const logo = css`
+  margin-right: 40px;
+  font-weight: 600;
+  font-size: 30px;
   color: white;
 `
 

@@ -144,7 +144,7 @@ export default function CallToActionWithVideo() {
                     bg: 'rgb(249, 92, 255)',
                     zIndex: -1,
                   }}>
-                  Connect,
+                  Connect
                 </Text>
                 <br />
                 <Text as={'span'} color={'rgb(249, 92, 255)'}>

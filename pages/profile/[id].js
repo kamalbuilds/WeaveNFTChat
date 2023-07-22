@@ -248,10 +248,10 @@ const headerStyle = css`
 `
 
 const profileImageStyle = css`
-  width: 42px;
-  height: 42px;
+  width: 100px;
+  height: 100px;
   max-width: 200px;
-  border: 10px solid white;
+  border: 0px solid white;
   border-radius: 12px;
 `
 
@@ -271,7 +271,7 @@ const containerStyle = css`
 `
 
 const buttonStyle = css`
-  border: 2px solid rgb(249, 92, 255);
+  border: 0px solid rgb(249, 92, 255);
   outline: none;
   margin-top: 15px;
   color: rgb(249, 92, 255);
