@@ -12,10 +12,10 @@ import * as LitJsSdk from "@lit-protocol/lit-node-client";
 import { Button } from "@chakra-ui/react";
 import { decryptString } from "@lit-protocol/lit-node-client/src";
 
-const Messages = ({ collection_name }) => {
+const Messages = ({ collection_address }) => {
 
   const contractTxId = "87ff-LsWUZPUV8oXaEOetybPvEifRjqn1zbzXlNw7CQ";
-  const COLLECTION_NAME = collection_name;
+  const COLLECTION_NAME = "test";
   // default use "messages for testing"
   const { userAddress } = useContext(AppContext);
   console.log( userAddress,'profile')
@@ -23,9 +23,10 @@ const Messages = ({ collection_name }) => {
   const [initDb, setInitDb] = useState(false);
   const [user, setUser] = useState(null); // State to store user data
   const [messages, setMessages] = useState([]); // State to store messages
-
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [inputMessage, setInputMessage] = useState("");
   const [decryptedMsg, setDecryptedMsg] = useState("");
+  const [nftImages, setNftImages] = useState([]);
   console.log(inputMessage,"ui")
   const handleSendMessage = async () => {
     if (!inputMessage.trim().length) {
@@ -43,6 +44,7 @@ const Messages = ({ collection_name }) => {
     }
   };
 
+  
 
   // Function to check if the user is logged in
   const checkUser = async () => {
@@ -117,6 +119,7 @@ const Messages = ({ collection_name }) => {
         {
           date: db.ts(),
           user_address: db.signer(),
+          collection_address: COLLECTION_NAME,
           encryptedData: encryptedData,
           encryptedSymmetricKey: LitJsSdk.uint8arrayToString(
             encryptedSymmetricKey,
@@ -139,47 +142,56 @@ const Messages = ({ collection_name }) => {
 
   // Function to log in the user
   const login = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-    const signer = await provider.getSigner();
-    await provider.send("eth_requestAccounts", []);
-    const wallet_address = await signer.getAddress();
-    let identity = await lf.getItem(
-      `temp_address:${contractTxId}:${wallet_address}`
-    );
-
-    let tx;
-    let err;
-    if (isNil(identity)) {
-      ({ tx, identity, err } = await db.createTempAddress(wallet_address));
-      const linked = await db.getAddressLink(identity.address);
-      if (isNil(linked)) {
-        alert("something went wrong");
-        return;
-      }
-    } else {
-      await lf.setItem("temp_address:current", wallet_address);
-
-      setUser({
-        wallet: wallet_address,
-        privateKey: identity.privateKey,
-      });
+    if (!window.ethereum) {
+      alert("Please install or enable a Web3-enabled browser extension like MetaMask.");
       return;
     }
-    if (!isNil(tx) && isNil(tx.err)) {
-      identity.tx = tx;
-      identity.linked_address = wallet_address;
-      await lf.setItem("temp_address:current", wallet_address);
-      await lf.setItem(
-        `temp_address:${contractTxId}:${wallet_address}`,
-        JSON.parse(JSON.stringify(identity))
+  
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+      const signer = await provider.getSigner();
+      await provider.send("eth_requestAccounts", []);
+      const wallet_address = await signer.getAddress();
+      let identity = await lf.getItem(
+        `temp_address:${contractTxId}:${wallet_address}`
       );
-      setUser({
-        wallet: wallet_address,
-        privateKey: identity.privateKey,
-      });
+  
+      let tx;
+      let err;
+      if (isNil(identity)) {
+        ({ tx, identity, err } = await db.createTempAddress(wallet_address));
+        const linked = await db.getAddressLink(identity.address);
+        if (isNil(linked)) {
+          alert("Something went wrong");
+          return;
+        }
+      } else {
+        await lf.setItem("temp_address:current", wallet_address);
+  
+        setUser({
+          wallet: wallet_address,
+          privateKey: identity.privateKey,
+        });
+        return;
+      }
+      if (!isNil(tx) && isNil(tx.err)) {
+        identity.tx = tx;
+        identity.linked_address = wallet_address;
+        await lf.setItem("temp_address:current", wallet_address);
+        await lf.setItem(
+          `temp_address:${contractTxId}:${wallet_address}`,
+          JSON.parse(JSON.stringify(identity))
+        );
+        setUser({
+          wallet: wallet_address,
+          privateKey: identity.privateKey,
+        });
+      }
+    } catch (error) {
+      console.error("login", error);
     }
   };
-
+  
   // Function to log out the user
   const logout = async () => {
     await lf.removeItem("temp_address:current");
@@ -192,7 +204,6 @@ const Messages = ({ collection_name }) => {
       const _db = new SDK({
         contractTxId: contractTxId,
       });
-      console.log(_db)
       await _db.init();
       setDb(_db);
       setInitDb(true);
@@ -200,10 +211,11 @@ const Messages = ({ collection_name }) => {
       console.error("setupWeaveDB", e);
     }
   };
-
+  console.log(db,"db")
   const getMessages = async () => {
     try {
-      const _messages = await db.cget(COLLECTION_NAME);
+      // const _messages = await db.cget(COLLECTION_NAME);
+      const _messages = await db.get(COLLECTION_NAME, ["collection_address"], [ "collection_address", "==", COLLECTION_NAME ]);
       console.log("getMessages", _messages);
       setMessages(_messages);
     } catch (e) {
@@ -274,8 +286,6 @@ const Messages = ({ collection_name }) => {
     });
   };
 
-  // console.log(messages[0].id,'f');
-
   useEffect(() => {
     checkUser();
     console.log(user,'user') 
@@ -317,7 +327,7 @@ const Messages = ({ collection_name }) => {
         {/* Render decrypted messages */}
           {
           messages.slice().reverse().map((item, index) => {
-            const isUserMessage = item.data.user_address === userAddress.toLowerCase();
+            const isUserMessage = item.user_address === userAddress.toLowerCase();
             console.log(isUserMessage,userAddress,"lets count")
             const messageStyle = {
               justifyContent: isUserMessage ? "flex-end" : "flex-start",
@@ -328,7 +338,7 @@ const Messages = ({ collection_name }) => {
               background: isUserMessage ? "black" : "gray.100",
               color: isUserMessage ? "white" : "black",
             };
-            const trimmedAddress = `${item.data.user_address.slice(0, 6)}...${item.data.user_address.slice(-4)}`;
+            const trimmedAddress = `${item.user_address.slice(0, 6)}...${item.user_address.slice(-4)}`;
             return (
               <Flex key={index} w="100%" {...messageStyle}>
                 {!isUserMessage && (
