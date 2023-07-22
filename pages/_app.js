@@ -8,14 +8,24 @@ import { createClient, STORAGE_KEY, authenticate as authenticateMutation, getCha
 import { parseJwt, refreshAuthToken } from '../utils'
 import { AppContext } from '../context'
 import Modal from '../components/CreatePostModal'
-import { ChakraProvider , theme} from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
+import { extendTheme } from "@chakra-ui/react";
+
 
 function MyApp({ Component, pageProps }) {
   const [connected, setConnected] = useState(true)
   const [userAddress, setUserAddress] = useState()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [userProfile, setUserProfile] = useState()
-  const router = useRouter()
+  const router = useRouter();
+
+
+  const config = {
+    initialColorMode: "dark",
+    useSystemColorMode: false,
+  };
+
+  const theme = extendTheme({ config });
 
   useEffect(() => {
     refreshAuthToken()
@@ -152,10 +162,15 @@ function MyApp({ Component, pageProps }) {
 }
 
 const appLayoutStyle = css`
-  width: 900px;
   margin: 0 auto;
-  padding: 78px 0px 50px;
-`
+  padding: 78px 100px 100px;
+  background-color: #4A5568;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+
 
 const linkTextStyle = css`
   margin-right: 40px;
