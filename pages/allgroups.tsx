@@ -13,7 +13,7 @@ function ProductGrid() {
           name: 'Ape Community',
           rating: 4.2,
           numReviews: 34,
-          href: 'http://localhost:3000/group/0xd956f74F467a23eF94b6535B7eB94074c37B3Cb8?topic=Rentable NFTs'
+          href: 'https://weavenftchat.vercel.app/group/0x60aDe2DBFC12fe45035EA9641e22952a8876410b?topic=Ape Community'
         },
         {
           isNew: true,
@@ -22,7 +22,7 @@ function ProductGrid() {
           name: 'Rentable Warriors',
           rating: 4.2,
           numReviews: 34,
-          href: 'http://localhost:3000/group/0xd956f74F467a23eF94b6535B7eB94074c37B3Cb8?topic=Rentable NFTs'
+          href: 'https://weavenftchat.vercel.app/group/0xd956f74F467a23eF94b6535B7eB94074c37B3Cb8?topic=Rentable NFTs'
         },
         {
           isNew: false,
@@ -31,9 +31,8 @@ function ProductGrid() {
           name: 'ZetaChain Community',
           rating: 4.2,
           numReviews: 34,
-          href: 'http://localhost:3000/group/0x4E75034960C924E8A85747E375378c49ddA17464?topic=ZetaChain NFTs'
+          href: 'https://weavenftchat.vercel.app/group/0x4E75034960C924E8A85747E375378c49ddA17464?topic=ZetaChain NFTs'
         }
-        // ...other groups
       ];
       
     return (
