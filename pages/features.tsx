@@ -54,7 +54,7 @@ export default function ThreeLogosGrid() {0
 
         <Flex direction="column" alignItems="center">
           <Avatar size="xl" src="https://breakorbit.vc/wp-content/uploads/2021/11/intmax_logo.png" />
-          <Text mt={5}>IntMax gives the power of Transactions 💵</Text>
+          <Text mt={5}>IntMax empowers the platform with walletless Onboarding 💵</Text>
         </Flex>
         
         <Flex direction="column" alignItems="center">

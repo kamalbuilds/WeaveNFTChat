@@ -13,7 +13,7 @@ export default function HowItWorks() {
         size={'lg'}
         fontWeight={'bold'}
         px={6}
-        leftIcon={<PlayIcon h={4} w={4} color={'blue'} />}
+        leftIcon={<PlayIcon h={4} w={4} color={'blue.100'} />}
       >
         How It Works
       </Button>
