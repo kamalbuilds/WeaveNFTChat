@@ -350,8 +350,9 @@ const Messages = ({ collection_address }) => {
               maxWidth: "350px",
               marginY: "1",
               padding: "3",
-              background: isUserMessage ? "black" : "gray.100",
+              background: isUserMessage ? "gray.400" : "gray.200",
               color: isUserMessage ? "white" : "black",
+              borderRadius: "10px",
             };
             const trimmedAddress = item && item.data.user_address
             ? `${item.data.user_address.slice(0, 6)}...${item.data.user_address.slice(-4)}`
