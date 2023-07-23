@@ -113,7 +113,7 @@ import {
               heading={'Simplified User Onboarding'}
               icon={<Icon as={FcBusinessman} w={10} h={10} />}
               description={
-                'Use popular authentication methods like Google OAuth and WebAuth for easy sign-up.'
+                'Walletless Onboarding for our users'
               }
               href={'#'}
             />

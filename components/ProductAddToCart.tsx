@@ -50,9 +50,9 @@ import {
     isNew: boolean;
     imageURL: string;
     name: string;
-    price: number;
     rating: number;
     numReviews: number;
+    href: string,
   }
   
   interface ProductAddToCartProps {
@@ -84,6 +84,8 @@ import {
             src={data.imageURL}
             alt={`Picture of ${data.name}`}
             roundedTop="lg"
+            width="500px"
+            height="500px"
           />
   
           <Box p="6">
@@ -109,21 +111,12 @@ import {
                 placement={'top'}
                 color={'gray.800'}
                 fontSize={'1.2em'}>
-                <chakra.a href={'#'} display={'flex'}>
+                <chakra.a href={data.href} display={'flex'}>
                   <Icon as={BsFillPlusSquareFill} h={7} w={7} alignSelf={'center'} />
                 </chakra.a>
               </Tooltip>
             </Flex>
-  
-            <Flex justifyContent="space-between" alignContent="center">
-              <Rating rating={data.rating} numReviews={data.numReviews} />
-              <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
-                <Box as="span" color={'gray.600'} fontSize="lg">
-                  £
-                </Box>
-                {data.price.toFixed(2)}
-              </Box>
-            </Flex>
+
           </Box>
         </Box>
       </Flex>

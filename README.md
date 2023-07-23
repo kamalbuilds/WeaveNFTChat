@@ -24,6 +24,7 @@ WeaveNFTChat is a state-of-the-art Group NFT Chat application that provides user
 | Lit Protocol     | Provides access control logic and fosters a secure chat environment.                       |
 | Arweave          | Ensures the immutability and long-term storage of user messages.                           |
 | Lens             | Offers a comprehensive social graph for visualizing social interactions within the NFTs.    |
+| Fleek             | Our Application hosted on Fleek https://ipfs.io/ipfs/QmZgagRUJvbcqTiTLUufw1dvW8hA9ieaQt6vLZgTrECSqd |
 
 ## Use Cases
 
@@ -31,7 +32,7 @@ WeaveNFTChat is a state-of-the-art Group NFT Chat application that provides user
 - **Social NFT Communities**: Provide a dedicated space for NFT collectors and enthusiasts to connect and interact.
 - **Collaborative Projects**: Foster collaboration and communication among users working on NFT-related projects.
 
-Our Group NFT Chat application promises an exciting fusion of social interaction, digital assets, and cutting-edge technology. Join us on this revolutionary platform to share, explore, and engage within the vibrant NFT community, with a specific focus on facilitating NFT Airdrops. 🌟💬🎉
+Our Group NFT Chat application promises an exciting fusion of social interaction, digital assets, and cutting-edge technology. Join us on this revolutionary platform to share, explore, and engage within the vibrant NFT community, with a specific focus on various usecases 🌟💬🎉
 
 By harnessing the power of these advanced technologies, we're excited to unlock new possibilities within the NFT landscape and redefine the future of digital social engagement. 🚀✨
 
