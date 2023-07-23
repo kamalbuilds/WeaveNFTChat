@@ -115,7 +115,7 @@ function MyApp({ Component, pageProps }) {
                 <Link href='/profiles'>
                   <p className={linkTextStyle}>Explore Profiles</p>
                 </Link>
-                <Link href='/allgroups'>
+                <Link href='/featuredgroups'>
                   <p className={linkTextStyle}>Explore Communities</p>
                 </Link>
                 <Link href='/webmax'>
