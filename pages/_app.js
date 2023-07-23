@@ -10,7 +10,7 @@ import { AppContext } from '../context'
 import Modal from '../components/CreatePostModal'
 import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from "@chakra-ui/react";
-
+import Links from '../components/Links';
 
 function MyApp({ Component, pageProps }) {
   const [connected, setConnected] = useState(true)
@@ -154,6 +154,7 @@ function MyApp({ Component, pageProps }) {
               />
             )
           }
+          <Links />
         </div>
       </AppContext.Provider>
     </ChakraProvider>

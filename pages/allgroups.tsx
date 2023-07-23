@@ -9,7 +9,7 @@ function ProductGrid() {
         {
           isNew: true,
           imageURL:
-            'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80',
+            'https://images.cointelegraph.com/images/717_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS9zdG9yYWdlL3VwbG9hZHMvdmlldy8xNjQ1ODZiZjViYzBlMmFkNGUxMDM1NDVlM2Y0NjAxMi5qcGc=.jpg',
           name: 'Ape Community',
           price: 450,
           rating: 4.2,

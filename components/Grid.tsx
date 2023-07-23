@@ -58,9 +58,6 @@ import {
               {description}
             </Text>
           </Box>
-          <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
-            Learn more
-          </Button>
         </Stack>
       </Box>
     );
