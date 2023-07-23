@@ -12,7 +12,6 @@ import {
   import Link from 'next/link';
   import { css } from '@emotion/css';
 
-  
   const SocialButton = ({
     children,
     label,
@@ -55,7 +54,11 @@ import {
     return (
       <Box
       bg={useColorModeValue('black', 'black')}
-      color={useColorModeValue('white', 'white')}>
+      color={useColorModeValue('white', 'white')}
+      position="fixed"
+      bottom="0"
+      right="0"
+      left="0">
         <Container
           as={Stack}
           maxW={'6xl'}
@@ -67,7 +70,7 @@ import {
           <Link href='/'>
               <p className={logo}>💬 <span className='text-xl'>WeaveNFTChat</span></p>
           </Link>
-          <Text>© 2023 WeaveNFTChat. All rights reserved</Text>
+          <Text>© 2023 Made with ❤️ @Weavedb Fellowship</Text>
           <Stack direction={'row'} spacing={6}>
             <SocialButton label={'Twitter'} href={'https://twitter.com/weavenftchat'}>
               <FaTwitter />

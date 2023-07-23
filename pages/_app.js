@@ -16,7 +16,8 @@ function MyApp({ Component, pageProps }) {
   const [connected, setConnected] = useState(true)
   const [userAddress, setUserAddress] = useState()
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [userProfile, setUserProfile] = useState()
+  const [userProfile, setUserProfile] = useState();
+  const [selectedAvt, setSelectedAvt] = useState(null);
   const router = useRouter();
 
 
@@ -97,7 +98,9 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <AppContext.Provider value={{
         userAddress,
-        profile: userProfile
+        profile: userProfile,
+        selectedAvt,
+        setSelectedAvt
       }}>
         <div>
           <nav className={navStyle}>
@@ -163,7 +166,7 @@ function MyApp({ Component, pageProps }) {
 
 const appLayoutStyle = css`
   margin: 0 auto;
-  padding: 78px 100px 100px;
+  padding: 100px 100px 100px;
   background-color: black;
   display: flex;
   justify-content: center;

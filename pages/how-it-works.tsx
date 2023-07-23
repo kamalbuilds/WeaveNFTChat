@@ -13,7 +13,7 @@ export default function HowItWorks() {
         size={'lg'}
         fontWeight={'bold'}
         px={6}
-        leftIcon={<PlayIcon h={4} w={4} color={'gray.700'} />}
+        leftIcon={<PlayIcon h={4} w={4} color={'blue'} />}
       >
         How It Works
       </Button>
@@ -30,9 +30,9 @@ export default function HowItWorks() {
             1) Click on &quot;Sign In&quot; to connect your Ethereum wallet
             <br/> 
             <br/> 
-            2) Copy and Paste your NFT Collection smart contract address (you can find it on Etherscan or OpenSea)
+            2) Copy and Paste your NFT Collection smartcontract address (you can find it on Etherscan or OpenSea)
             <br/> <br/> 
-            3) Type the Topic name (example: Airdrop)
+            3) Type the Topic name (example: Health , Airdrop)
             <br/>
             <br/> 
             4) Click on &quot;Join Chat&quot;

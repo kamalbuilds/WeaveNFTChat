@@ -8,6 +8,7 @@ const Footer = ({ inputMessage, setInputMessage, handleSendMessage }) => {
         placeholder="Type Something..."
         border="1px solid lightgray"
         borderRadius="none"
+        color={"white"}
         _focus={{
           border: "1px solid blue",
         }}

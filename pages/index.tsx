@@ -33,7 +33,7 @@ export default function CallToActionWithVideo() {
   };
 
   return (
-    <Container maxW={'container.xl'}>
+    <Container maxW={'container.xl'} className='my-16'>
         <Container maxW={'container.xl'}>
         <Stack
           spacing={{ base: 5, md: 5 }}

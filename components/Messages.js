@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, useToast } from "@chakra-ui/react";
 import SDK from "weavedb-sdk";
 import { isNil } from "ramda";
 import { ethers } from "ethers";
@@ -15,7 +15,7 @@ import { decryptString } from "@lit-protocol/lit-node-client/src";
 const Messages = ({ collection_address }) => {
   const contractTxId = "87ff-LsWUZPUV8oXaEOetybPvEifRjqn1zbzXlNw7CQ";
   const COLLECTION_NAME = "test";
-  const { userAddress } = useContext(AppContext);
+  const { userAddress , selectedAvt } = useContext(AppContext);
   console.log( userAddress,'profile')
   const [db, setDb] = useState(null);
   const [initDb, setInitDb] = useState(false);
@@ -25,7 +25,7 @@ const Messages = ({ collection_address }) => {
   const [inputMessage, setInputMessage] = useState("");
   const [decryptedMsg, setDecryptedMsg] = useState("");
   const [nftImages, setNftImages] = useState([]);
-  console.log(inputMessage,"ui")
+
   const handleSendMessage = async () => {
     if (!inputMessage.trim().length) {
       return;
@@ -42,7 +42,7 @@ const Messages = ({ collection_address }) => {
     }
   };
 
-  
+  const toast = useToast();
 
   // Function to check if the user is logged in
   const checkUser = async () => {
@@ -66,7 +66,7 @@ const Messages = ({ collection_address }) => {
       await lit.connect();
 
       const authSig = await LitJsSdk.checkAndSignAuthMessage({
-        chain: "polygon",
+        chain: "mumbai",
       })
 
       const { encryptedString, symmetricKey } = await LitJsSdk.encryptString(
@@ -77,17 +77,16 @@ const Messages = ({ collection_address }) => {
       // more examples at: https://developer.litprotocol.com/accessControl/EVM/basicExamples#a-specific-wallet-address
       const accessControlConditions = [
         {
-          contractAddress: '',
-          standardContractType: '',
-          chain: 'polygon',
-          method: 'eth_getBalance',
+          contractAddress: collection_address,
+          standardContractType: 'ERC721',
+          chain: "mumbai",
+          method: 'balanceOf',
           parameters: [
-            ':userAddress',
-            'latest'
+            ':userAddress'
           ],
           returnValueTest: {
-            comparator: '>=',
-            value: '10000000000000'
+            comparator: '>',
+            value: '0'
           }
         }
       ]
@@ -95,7 +94,7 @@ const Messages = ({ collection_address }) => {
       const encryptedSymmetricKey = await lit.saveEncryptionKey({
         accessControlConditions,
         authSig,
-        chain: "polygon",
+        chain: "mumbai",
         symmetricKey,
       });
 
@@ -124,10 +123,19 @@ const Messages = ({ collection_address }) => {
             "base16"
           ),
           accessControlConditions: accessControlConditions,
+          selectedAvt: selectedAvt,
         },
         COLLECTION_NAME,
         user
       )
+
+      toast({
+        title: "Message sent successfully",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });  
+      
       console.log("tx", tx)
 
       console.log("result", await tx.getResult())
@@ -211,7 +219,7 @@ const Messages = ({ collection_address }) => {
   const getMessages = async () => {
     try {
       // const _messages = await db.cget(COLLECTION_NAME);
-      const _messages = await db.get(COLLECTION_NAME, ["collection_address"], [ "collection_address", "==", collection_address ]);
+      const _messages = await db.cget(COLLECTION_NAME, ["collection_address"], [ "collection_address", "==", collection_address ]);
       console.log("getMessages", _messages);
       setMessages(_messages);
     } catch (e) {
@@ -221,25 +229,23 @@ const Messages = ({ collection_address }) => {
 
   const decryptMsg = async (docId) => {
     // retrieve specific document from your collection, then lit protocol will validate your encryption key and accessControlConditions to decrypt the data requested
-
+    console.log(docId,"docid")
     try {
       const document = await db.get(COLLECTION_NAME, docId)
-      console.log("document", document)
+      console.log("here is the document", document)
 
       const lit = new LitJsSdk.LitNodeClient()
       await lit.connect()
 
-      const { encryptedData, encryptedSymmetricKey, accessControlConditions } =
-        document
+      const { encryptedData, encryptedSymmetricKey, accessControlConditions } = document
 
       const authSig = await LitJsSdk.checkAndSignAuthMessage({
-        chain: "polygon",
+        chain: "mumbai",
       })
-
       const symmetricKey = await lit.getEncryptionKey({
         accessControlConditions,
         toDecrypt: encryptedSymmetricKey,
-        chain: "polygon",
+        chain: "mumbai",
         authSig,
       })
 
@@ -266,7 +272,21 @@ const Messages = ({ collection_address }) => {
         [docId]: decryptedString,
       }));
       console.log("decryptedString", decryptedMsg)
+
+      toast({
+        title: "message decrypted successfully",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });  
     } catch (e) {
+      
+      toast({
+        title: e.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });  
       console.error("decryptMsg", e)
     }
   }
@@ -323,8 +343,7 @@ const Messages = ({ collection_address }) => {
         {/* Render decrypted messages */}
           {
           messages.slice().reverse().map((item, index) => {
-            const isUserMessage =  item.user_address === userAddress.toLowerCase();
-            console.log(isUserMessage,userAddress,"lets count")
+            const isUserMessage =  item.data.user_address === userAddress?.toLowerCase();
             const messageStyle = {
               justifyContent: isUserMessage ? "flex-end" : "flex-start",
               alignSelf: isUserMessage ? "flex-end" : "flex-start",
@@ -334,22 +353,22 @@ const Messages = ({ collection_address }) => {
               background: isUserMessage ? "black" : "gray.100",
               color: isUserMessage ? "white" : "black",
             };
-            const trimmedAddress = item && item.user_address
-            ? `${item.user_address.slice(0, 6)}...${item.user_address.slice(-4)}`
+            const trimmedAddress = item && item.data.user_address
+            ? `${item.data.user_address.slice(0, 6)}...${item.data.user_address.slice(-4)}`
             : '';
             return (
               <Flex key={index} w="100%" {...messageStyle}>
                 {!isUserMessage && (
                   <Avatar
                     name="Computer"
-                    src="https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+                    src={item.data.selectedAvt}
                     bg="blue.300"
                   />
                 )}
                 <Flex flex="1" alignSelf="center" p="3">
                   <Text> By {trimmedAddress}</Text>
                 </Flex>
-
+                  { console.log(item ,"here")}
                 {/* Conditionally render the "Decrypt Msg" button */}
                 {!decryptedMsg[item.id] && (
                       <Flex justify="right" mt="2">
@@ -364,6 +383,15 @@ const Messages = ({ collection_address }) => {
                   <Text> {decryptedMsg[item.id]} </Text>
                 </Flex>
               )}
+
+              {isUserMessage && (
+                  <Avatar
+                    name="Computer"
+                      src={selectedAvt}
+                      bg="blue.300"
+                      className="mx-2"
+                  />
+                )}
               </Flex>
             );
           })

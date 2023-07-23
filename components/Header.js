@@ -8,6 +8,7 @@ const Header = () => {
   const { userAddress } = useContext(AppContext);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [nftImages, setNftImages] = useState([]);
+  const { selectedAvt, setSelectedAvt } = useContext(AppContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -69,6 +70,7 @@ const Header = () => {
                   src={imageUrl}
                   onClick={() => {
                     setSelectedAvatar(imageUrl);
+                    setSelectedAvt(imageUrl);
                     onClose();
                   }}
                   style={{

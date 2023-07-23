@@ -44,7 +44,7 @@ export default function ThreeLogosGrid() {0
             src="https://101-user-uploads.s3.us-east-1.amazonaws.com/a9dfa84d-b9ed-4ae3-802f-5c4dc66c8bd5.png"
             alt="Lit protocol"
           />
-          <Text mt={5}>Lit protocol makes sure that only invited guests enter your chat ✅</Text>
+          <Text mt={5}>Lit Protocol provides access control logic and fosters a secure chat environment.✅</Text>
         </Flex>
 
         <Flex direction="column" alignItems="center">
@@ -55,6 +55,11 @@ export default function ThreeLogosGrid() {0
         <Flex direction="column" alignItems="center">
           <Avatar size="xl" src="https://breakorbit.vc/wp-content/uploads/2021/11/intmax_logo.png" />
           <Text mt={5}>IntMax gives the power of Transactions 💵</Text>
+        </Flex>
+        
+        <Flex direction="column" alignItems="center">
+          <Avatar size="xl" src="https://d31ygswzsyecnt.cloudfront.net/arweavelogo.png" />
+          <Text mt={5}>Arweave ensures the permanance of your data 👌🏻</Text>
         </Flex>
       </Grid>
     </Box>
